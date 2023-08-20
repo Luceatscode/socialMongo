@@ -12,7 +12,6 @@ module.exports = {
         }
     },
 
-
     // get one thought by id
     async thought({ params }, res) {
         try {
