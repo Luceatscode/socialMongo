@@ -1,33 +1,34 @@
 const router = require('express').Router();
+const {
+    getAllUsers,
+    getUserById,
+    createUser,
+    updateUser,
+    deleteUser,
+    addFriend,
+    deleteFriend
+} = require('../../../controllers/user');
 
+// get/api/users
+router.get('/', getAllUsers);
 
-router.get('/', (req, res) => {
-    res.json('get/api/users')
-});
+// get/api/users/:id
+router.get('/:userId', getUserById);
 
-router.get('/:id', (req, res) => {
-    res.json('get/api/users/:id')
-});
+// post/api/users
+router.post('/', createUser);
 
-router.post('/', (req, res) => {
-    res.json('post/api/users')
-});
+// put/api/users/:id
+router.put('/:userId', updateUser);
 
-router.put('/:id', (req, res) => {
-    res.json('put/api/users/:id')
-});
+// delete/api/users/:id
+router.delete('/:userId', deleteUser);
 
-router.delete('/:id', (req, res) => {
-    res.json('delete/api/users/:id')
-});
+// post/api/users/:userId/friends/:friendId
+router.post('/:userId/friends/:friendId', addFriend);
 
-router.post('/:userId/friends/:friendId', (req, res) => {
-    res.json('post/api/users/:userId/friends/:friendId')
-});
-
-router.delete('/:userId/friends/:friendId', (req, res) => {
-    res.json('delete/api/users/:userId/friends/:friendId')
-});
+// delete/api/users/:userId/friends/:friendId
+router.delete('/:userId/friends/:friendId', deleteFriend);
 
 module.exports = router;
 
