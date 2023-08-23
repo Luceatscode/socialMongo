@@ -60,7 +60,7 @@ module.exports = {
             if (!user) {
                 return res.status(404).json({ message: 'No User found with this id!' });
             }
-            res.json({ message: 'User and associated applications deleted!' });
+            res.json({ message: 'User and associated thoughts deleted!' });
         } catch (err) {
             res.status(400).json(err);
         }
