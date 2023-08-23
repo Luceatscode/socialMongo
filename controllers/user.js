@@ -60,8 +60,6 @@ module.exports = {
             if (!user) {
                 return res.status(404).json({ message: 'No User found with this id!' });
             }
-
-            await Application.deleteMany({ _id: { $in: user.applications } });
             res.json({ message: 'User and associated applications deleted!' });
         } catch (err) {
             res.status(400).json(err);

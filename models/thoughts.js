@@ -1,32 +1,34 @@
 const { Schema, Types, model } = require('mongoose');
+const ReactionsSchema = require('./reactions');
 
 const ThoughtsSchema = new Schema(
-    {   
+    {
         thoughtText: {
             type: String,
-            required: 'Thought is required'
-            // Must be between 1 and 280 characters
+            required: 'Thought is required',
+            minLength: 1,
+            maxLength: 280,
         },
 
         createdAt: {
             type: Date,
             default: Date.now,
-            // Use a getter method to format the timestamp on query
         },
 
-        username: {    
+        username: {
             type: String,
             required: 'Username is required'
         },
 
-        reactions: [
-            {
-                    type: Schema.Types.ObjectId,
-            }
-        ]
-
-
+        reactions: [ReactionsSchema],
     },
+    {
+        toJSON: {
+            getters: true,
+        },
+        id: false,
+    }
+
 );
 
 ThoughtsSchema.virtual('reactionCount').get(function () {
